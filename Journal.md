@@ -65,4 +65,44 @@ So in the previous day, I have already selected the micro controller and pretty 
 <img width="709" height="648" alt="Screenshot 2026-07-06 at 9 59 05 AM" src="https://github.com/user-attachments/assets/c6ea2f83-6bc6-4a8a-83ed-295e32b07c51" />
 
 
+**Final Schematic**
+
+<img width="816" height="584" alt="9" src="https://github.com/user-attachments/assets/5d4243cc-0cbb-4ddf-a844-39298fd08a2e" />
+
+
 **Total Time Spent - 3.5hr**
+
+---
+
+## July 5th : Done With the PCB tracing 
+
+So previously I have completed a schematic of the PCB and I take one day gap because I was not in my hometown, so after coming I went to look at the schematic, and then I realise that I need to do a lot of work like I have just made the schematic now I need to import that schematic into PCB designing. Then I need to trace all the pads. So today I will do all of that hopefully completed that, like the main problem is the DRC check error,  I don't know. I have done completing all the traces, but suddenly it's showing error. Hopefully, I will try my best this time. I will do it with all my concentration so that nothing gets out and all the pads should be routed.
+
+** importing schematic to PCB**
+
+<img width="1470" height="883" alt="10" src="https://github.com/user-attachments/assets/725d33ea-b5d5-4568-ad2f-b12bbb85a0d6" />
+
+
+<img width="620" height="685" alt="11" src="https://github.com/user-attachments/assets/8b20f169-b127-4fbf-97e9-38b4910e06e6" />
+
+<img width="800" height="536" alt="12" src="https://github.com/user-attachments/assets/1488a06a-5989-4e26-ad09-734ba373739f" />
+
+<img width="631" height="420" alt="13" src="https://github.com/user-attachments/assets/ed480f51-0b51-4a90-806b-fec13ffdb595" />
+
+<img width="804" height="538" alt="14" src="https://github.com/user-attachments/assets/c8b634fa-db51-4df8-a11e-b5e42d977984" />
+
+Finally, after a lot of time, I have finally completed the PCB designing part steal the PCB looks bit more like normal. I need to add some silk screen to the PCV, I will do it on the next day because today, I am so tired doing all the PCB tracing, and the copper layer is too much
+
+
+**all pads are routed**
+
+<img width="438" height="102" alt="15" src="https://github.com/user-attachments/assets/4bec9dd9-dea1-4b2d-a7da-823a72043e5d" />
+
+
+
+
+**Total Time Spent - 4.2hr**
+
+
+
+

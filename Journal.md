@@ -191,7 +191,7 @@ Today I first took the measurement of the PCB from the PCB designing software an
 
 <img width="1470" height="956" alt="Screenshot 2026-07-07 at 2 06 59 AM" src="https://github.com/user-attachments/assets/3d7b2268-6506-4188-8077-8228e464b160" />
 
-<img width="1470" height="956" alt="Screenshot 2026-07-07 at 2 07 07 AM" src="https://github.com/user-attachments/assets/6622beed-f26a-4ddf-bf75-45364f80fa94" />
+<img width="1470" height="956" alt="Screenshot 2026-07-07 at 2 06 52 AM" src="https://github.com/user-attachments/assets/7cebf2cc-3f31-458b-bc58-240d51e1cd3d" />
 
 
 <img width="1470" height="956" alt="26" src="https://github.com/user-attachments/assets/588d9252-c923-4c0a-9d1c-4b7bd80dc98d" />

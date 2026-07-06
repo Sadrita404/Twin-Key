@@ -14,6 +14,16 @@ Today I went in Google and search about the different kind of micro controller t
 
 <img width="1208" height="658" alt="2" src="https://github.com/user-attachments/assets/d57b5153-fcb6-4e90-80a3-602e657eca6a" />
 
+<img width="772" height="608" alt="Screenshot 2026-07-06 at 11 10 08 AM" src="https://github.com/user-attachments/assets/8d639936-e6c9-4db9-b656-99bb9081e2a6" />
+
+
+<img width="1375" height="725" alt="Screenshot 2026-07-06 at 11 11 10 AM" src="https://github.com/user-attachments/assets/bbcd68b3-4373-4b7c-b2ad-53b0d161391a" />
+
+
+I am following this doc - https://files.seeedstudio.com/wiki/XIAO-RP2040/res/rp2040_datasheet.pdf
+https://www.waveshare.com/wiki/RP2040-Zero?srsltid=AfmBOorqaLMlEx-NeF0sFeqP3B-EAvL2AJbcMyj2hVzvlR0YcNgk93x1
+
+this are the two doc from where I know about the micro contoller 
 
 <img width="1096" height="720" alt="3" src="https://github.com/user-attachments/assets/9e56914f-4b94-4a0f-9753-a09ae8c8d764" />
 

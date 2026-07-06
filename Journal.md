@@ -1,4 +1,4 @@
-<img width="1470" height="956" alt="34" src="https://github.com/user-attachments/assets/4b40756f-1598-41b4-a4e1-f327fa9399d2" />
+<img width="1470" height="956" alt="53" src="https://github.com/user-attachments/assets/a423d9e3-05a6-4bf2-b67c-2215a2e2e067" /><img width="1470" height="956" alt="34" src="https://github.com/user-attachments/assets/4b40756f-1598-41b4-a4e1-f327fa9399d2" />
 | Title | Twin Key |
 | :-- | :---|
 |Author |Sadrita Neogi|
@@ -227,5 +227,48 @@ Today I first took the measurement of the PCB from the PCB designing software an
 
 <img width="1470" height="956" alt="42" src="https://github.com/user-attachments/assets/6119f355-b0fd-4568-8852-8f36c2150294" />
 
-**Total Time Spent - 3.3hr**
+**Total Time Spent - 2.6hr**
+
+---
+
+## July 6th : Working on the Right Side of the Keyboard (CAD)
+
+So today I started woriking on the right side of the keyboard mostly I will be adding all the keycaps and render some good images for the github . This took me a lot of time as I have no experience in the field of Rendering and creating environment scene in fusion 360 . But you did making this project. I have learn how to do the simple one, and I have also enhanced my CAD skill by pretty Much about what I know earlier.
+
+<img width="1470" height="956" alt="43" src="https://github.com/user-attachments/assets/3757573d-2ec1-481d-a0e0-a3e69f6cb99b" />
+
+
+<img width="1470" height="956" alt="44" src="https://github.com/user-attachments/assets/ad4e33e6-9701-4f55-a560-82fe20d02f6f" />
+
+<img width="1470" height="956" alt="45" src="https://github.com/user-attachments/assets/18d09922-403f-4c3f-a03a-092e948e9960" />
+
+
+<img width="1470" height="956" alt="46" src="https://github.com/user-attachments/assets/6e0fb7b1-1098-4aa4-a017-238a4b91c238" />
+
+<img width="1470" height="956" alt="47" src="https://github.com/user-attachments/assets/a65641ac-b099-40d5-88c9-0c58c2857e34" />
+
+<img width="1470" height="956" alt="48" src="https://github.com/user-attachments/assets/483ce5a2-c915-4bd7-8d10-b151484b2870" />
+
+<img width="1470" height="956" alt="49" src="https://github.com/user-attachments/assets/442471ea-9360-4cf5-84e7-0a001d8fef03" />
+
+<img width="1470" height="956" alt="50" src="https://github.com/user-attachments/assets/2b424c28-0ff6-4d08-8caf-71ee2dbcb063" />
+
+
+#### Now rendering images in fusion 360
+
+<img width="1470" height="956" alt="51" src="https://github.com/user-attachments/assets/018ccc07-4cd9-4901-844a-d78c67b75468" />
+
+<img width="2940" height="1612" alt="52" src="https://github.com/user-attachments/assets/caf0197a-6495-4400-a474-2f8fcf5982c3" />
+
+<img width="1470" height="956" alt="53" src="https://github.com/user-attachments/assets/812b52c7-dab3-49ac-a4af-259d3a810694" />
+
+### FInal Output 
+
+<img width="2940" height="1612" alt="render 1" src="https://github.com/user-attachments/assets/5e1d0849-7ed8-46fc-bd19-7b1dc0148aac" />
+
+<img width="2940" height="1612" alt="render 2" src="https://github.com/user-attachments/assets/674de833-3a61-4e7f-ae91-dfac8df443df" />
+
+<img width="2940" height="1612" alt="render 3" src="https://github.com/user-attachments/assets/66dbef83-153b-496b-b4ab-87406eb783e4" />
+
+**Total Time Spent - 3.1hr**
 

@@ -103,6 +103,7 @@ Finally, after a lot of time, I have finally completed the PCB designing part st
 
 **Total Time Spent - 4.6hr**
 
+---
 
 ## July 2nd : Completing the rest of the PCB part
 
@@ -146,6 +147,31 @@ I make the PCB silk screen simple because when I will solder all the parts like 
 <img width="1383" height="811" alt="25" src="https://github.com/user-attachments/assets/64f46db0-911e-4060-b444-47c031d44bfb" />
 
 **Total Time Spent - 1.8hr**
+
+---
+
+## July 3rd : Working on some errors 
+
+So I have added one extra rows in the keyboard schematic so that I can reduece the Macro layer in the firmware and I have more room to add the key mapping in the first layer to add the basic needs of an keyboard ..
+
+<img width="623" height="237" alt="Screenshot 2026-07-06 at 11 00 37 AM" src="https://github.com/user-attachments/assets/362f3292-20a6-425b-a520-efb1cb5668b0" />
+
+
+Next I went to the JLC pcb to just check what will be the cost of my PCB after production 
+
+**Also I have generate the gerber file again with this changes**
+
+<img width="1438" height="808" alt="bill 1" src="https://github.com/user-attachments/assets/a82511cd-6f98-437a-8ff9-4aaf6e155ccb" />
+
+
+
+For today I will not do any work as I need to do my school work now and suddenly I thought to add one extra row in the keyboard so that's whay I am just making this amout of progress today hopefully, done something based in the coming days..
+
+**Total Time Spent - 0.5hr**
+
+--
+
+
 
 
 

@@ -40,6 +40,20 @@ So behind choosing this project is basically I love split keyboard and the way i
 | Type-C to Type-C cable |
 
 
+## Firmware
+
+Precompiled VIA-enabled firmware:
+
+- Flash `twin_key_sadrita.uf2` under [Firmware/](Firmware/) to the RP2040 MCUs.
+- Load the [via.json](https://github.com/Sadrita404/Twin-Key/blob/main/Firmware/QMK/keyboards/twin_key/via.json) file in `Design` tab for [VIA](https://usevia.app) configuration.
+
+QMK source is available under [firmware/QMK/keyboards/Twin-Key](https://github.com/Sadrita404/Twin-Key/tree/main/Firmware/QMK/keyboards/twin_key).
+
+
+
+### Journal - [Journal.md](https://github.com/Sadrita404/Twin-Key/blob/main/Journal.md)
+
+
 <div align="center">
 
 | | Building Process | |
@@ -54,7 +68,7 @@ So behind choosing this project is basically I love split keyboard and the way i
 
 
 <div align="center">
-  <h2> Final Look </h2>
+  <h2> Final PCB </h2>
   <table border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse;">
     <tr>
       <!-- FRONT SIDE CARD -->
@@ -77,6 +91,7 @@ So behind choosing this project is basically I love split keyboard and the way i
   </table>
 </div>
 </div>
+
 
 ## Final Render 
 

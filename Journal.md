@@ -227,7 +227,7 @@ Today I first took the measurement of the PCB from the PCB designing software an
 
 <img width="1470" height="956" alt="42" src="https://github.com/user-attachments/assets/6119f355-b0fd-4568-8852-8f36c2150294" />
 
-**Total Time Spent - 2.6hr**
+**Total Time Spent - 3.1hr**
 
 ---
 
@@ -270,5 +270,5 @@ So today I started woriking on the right side of the keyboard mostly I will be a
 
 <img width="2940" height="1612" alt="render 3" src="https://github.com/user-attachments/assets/66dbef83-153b-496b-b4ab-87406eb783e4" />
 
-**Total Time Spent - 3.1hr**
+**Total Time Spent - 3.3hr**
 

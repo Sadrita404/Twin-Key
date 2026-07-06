@@ -1,4 +1,102 @@
-# Twin-Key
+|Title | Twin Key |
+|:-- |:--|
+|Author | Sadrita Neogi|
+
+### Overview
+This split keyboard is basically fixes everything annoying about standard typing. We took the logic of an ortholinear grid (where everything is predictable) and mashed it together with a column stagger that actually matches how long your fingers are. For me this type of form factor keyboard is good for long hours of typing
+
+
+### Why I choose this project?
+So behind choosing this project is basically I love split keyboard and the way it just fold and compact. It is easy to carry and it is good for writing for long hours, so I wanted to make one for myself not to buy it but to make it for myself and customisable, so this is the reason I choose this project.
+
+### Features 
+
+* It's an 18 - 18 layout Split Keyboard .
+* The connection between two keyboard are using 3.5mm TRRS to TRRS Cable.
+* The main micro controller of this keyboard is RP2040-Zero and RP2040-Tiny.
+* The PCB of this keyboard is reversible so that we can reduce the PCB wastage.
+* This is an wired Keyboard 
+* This Keyboard is made for good ergonomic
+* QMK Firmware support for this keyboard 
+* Hot-swappable ( for every keys )
+* This is a low profile keyboard 
+* Custom 3d printed case and top plate
+
+### Components Used in this Build 
+
+| Item |
+| --- |
+| PCB (MOQ 5) |
+| RP2040-Zero (left side) |
+| RP2040-Tiny (right side) |
+| Kailh Choc v2 Low Profile Switches |
+| Kailh Choc PG1350 Hot Swap Sockets |
+| CFX MX Low Profile Keycaps |
+| 1N4148 SOD-123 SMD Diode |
+| PJ-320A TRRS Jack |
+| M2×3 heat-set threaded inserts |
+| M2×5 countersunk screws |
+| 3.5mm TRRS to TRRS cable |
+| Type-C to Type-C cable |
+
+
+<div align="center">
+
+| | Building Process | |
+| :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/a658099e-e0c1-4440-b17c-a0f4168fa6ed" width="100%" /> | <img src="https://github.com/user-attachments/assets/0d5e2b55-575e-4615-b95c-1178ef51f906" width="100%" /> | <img src="https://github.com/user-attachments/assets/fed89f04-1a26-4528-b030-14e272187758" width="100%" /> |
+| <img src="https://github.com/user-attachments/assets/1d4ac166-9032-4e8b-81b3-bca63945b287" width="100%" /> | <img src="https://github.com/user-attachments/assets/b6106557-6cc1-422f-a06e-9819eab307c9" width="100%" /> | <img src="https://github.com/user-attachments/assets/f7200940-218c-4f83-afef-82e2102ea0ec" width="100%" /> |
+| <img src="https://github.com/user-attachments/assets/f8e1f592-66fa-409a-b0b4-051ae611a034" width="100%" /> | <img src="https://github.com/user-attachments/assets/5a249239-1e32-498f-a827-63e4aadc1099" width="100%" /> | <img src="https://github.com/user-attachments/assets/47df6155-37a1-4970-b3b0-dc0a216bca05" width="100%" /> |
+| <img src="https://github.com/user-attachments/assets/f624a89b-4721-4e76-8dbb-bac5cc366549" width="100%" /> | <img src="https://github.com/user-attachments/assets/5bb80604-8176-4b06-afb1-6173f0ba5527" width="100%" /> | <img src="https://github.com/user-attachments/assets/5fb7f6c9-f681-4d75-a019-6ad055f45853" width="100%" /> |
+| <img src="https://github.com/user-attachments/assets/2c8e80d8-f91f-4fe6-9530-d7986ebdfde0" width="100%" /> | <img src="https://github.com/user-attachments/assets/ef49495b-dbca-4ef3-8490-e93663a01857" width="100%" /> | <img src="https://github.com/user-attachments/assets/20116e59-085e-4cf9-a5f6-f96ec94b4eec" width="100%" /> |
+| <img src="https://github.com/user-attachments/assets/95a5a9b9-6e2a-4ded-8b3d-5261e04bc6d9" width="100%" /> | <img src="https://github.com/user-attachments/assets/a5fd5569-5b7d-42e2-9519-cb96d44845f7" width="100%" /> | <img src="https://github.com/user-attachments/assets/3483d5a9-e958-44a3-8ec0-04c7cbdfa462" width="100%" /> |
+| <img src="https://github.com/user-attachments/assets/c7fb158a-cfd8-45f8-b0ec-8ae7ba9352a8" width="100%" /> | <img src="https://github.com/user-attachments/assets/f1764ff6-8be8-4e82-a9f6-b893cfb4bb53" width="100%" /> | <img src="https://github.com/user-attachments/assets/2367de9e-3259-4ea0-b6bf-c1e8562f7fe7" width="100%" /> |
+
+
+<div align="center">
+  <h2> Final Look </h2>
+  <table border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse;">
+    <tr>
+      <!-- FRONT SIDE CARD -->
+      <td align="center" valign="top" width="50%" style="background: #ffffff; border: 1px solid #d0d7de; border-radius: 12px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <img src="https://github.com/user-attachments/assets/a4178a2c-75d3-4db2-8528-6f2520c6f13e" width="100%" alt="Front Side View" style="border-radius: 6px;" />
+        <div style="margin-top: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 13px; color: #57606a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+          ▲ Left Side
+        </div>
+      </td>
+      <!-- SPACER FOR GITHUB MOBILE DEGRADATION -->
+      <td width="2%">&nbsp;</td>
+      <!-- BACK SIDE CARD -->
+      <td align="center" valign="top" width="50%" style="background: #ffffff; border: 1px solid #d0d7de; border-radius: 12px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <img src="https://github.com/user-attachments/assets/11a62ee8-de7c-49f5-a1b0-233c9f363e79" width="100%" alt="Back Side View" style="border-radius: 6px;" />
+        <div style="margin-top: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 13px; color: #57606a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+          ▲ Right Side 
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+## Final Render 
+
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/4e8f50fd-025e-4cc5-ae18-0321aeed9e14" width="100%" style="border: 4px solid #ccc; border-radius: 6px; margin-bottom: 15px;" alt="render 1" />
+
+<img src="https://github.com/user-attachments/assets/e759321b-a368-4c93-a1c9-36371b1dd2f1" width="100%" style="border: 4px solid #ccc; border-radius: 6px; margin-bottom: 15px;" alt="render 2" />
+
+<img src="https://github.com/user-attachments/assets/63603048-2754-44f4-a2a2-ea6382959d3f" width="100%" style="border: 4px solid #ccc; border-radius: 6px; margin-bottom: 15px;" alt="render 3" />
+
+</div>
+
+
+
+
+<div align="center">
+  <h2> Bill of Materials </h2>
+</div>
+
 | Component Name | Purpose | Qty | Unit Price | Total Price | Source Link |
 | :--- | :--- | :---: | :---: | :---: | :---: |
 | **PCB (moq5)** | The Main Board | 5 | $1.54 | $7.70 | [JLC PCB](https://jlcpcb.com/) |
@@ -16,3 +114,7 @@
 | **3D Print** | For the Case | 1 | $0.00 | $0.00 | [#printing-legion](https://printlegion.hackclub.com/) |
 | **Shipping** | Including PCB shipping | - | - | $13.40 | - |
 | **Total** | | | | **$99.89** | |
+| **Round of budget** | | | | **$100** | |
+
+Project Under Hack Club
+

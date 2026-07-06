@@ -155,7 +155,7 @@ QMK source is available under [firmware/QMK/keyboards/Twin-Key](https://github.c
 | **3D Print** | For the Case | 1 | $0.00 | $0.00 | [#printing-legion](https://printlegion.hackclub.com/) |
 | **Shipping** | Including PCB shipping | - | - | $13.40 | - |
 | **Total** | | | | **$99.89** | |
-| **Round of budget** | | | | **$100** | |
+| **Round Off Budget** | | | | **$100** | |
 
 I have provided the links for the parts I will be self-sourcing, so that if readers want to recreate this, they will be able to get all the parts.This is also updated on the [bom.csv](/bom.csv)
 

@@ -185,6 +185,15 @@ For today I will not do any work as I need to do my school work now and suddenly
 ## July 5th : Working on Keyboard Case (CAD)
 Today I first took the measurement of the PCB from the PCB designing software and noted down then I move to fusion 360 where I mostly design all of the CAD model for my projects and I went there. I design and simple elegant kiss for that which took me a lot of time and iteration so that it can fit perfectly and I also export the PCB step file. and use it to the CAD model also I have added keycaps to the keyboard which is pretty good to see.
 
+<img width="1470" height="956" alt="Screenshot 2026-07-07 at 2 06 34 AM" src="https://github.com/user-attachments/assets/3ad86a71-e12d-44de-8e1e-8af793ef38e4" />
+
+<img width="1470" height="956" alt="Screenshot 2026-07-07 at 2 07 07 AM" src="https://github.com/user-attachments/assets/6d21c495-342f-4f06-9479-a393efeacdf8" />
+
+<img width="1470" height="956" alt="Screenshot 2026-07-07 at 2 06 59 AM" src="https://github.com/user-attachments/assets/3d7b2268-6506-4188-8077-8228e464b160" />
+
+<img width="1470" height="956" alt="Screenshot 2026-07-07 at 2 07 07 AM" src="https://github.com/user-attachments/assets/6622beed-f26a-4ddf-bf75-45364f80fa94" />
+
+
 <img width="1470" height="956" alt="26" src="https://github.com/user-attachments/assets/588d9252-c923-4c0a-9d1c-4b7bd80dc98d" />
 
 

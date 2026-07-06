@@ -3,6 +3,7 @@
 | :-- | :---|
 |Author |Sadrita Neogi|
 |Type | Split Keyboard |
+Total Hrs | 19.4 |
 
 
 ## June 24th : Research about the micro controller for the keyboard
@@ -156,7 +157,7 @@ I make the PCB silk screen simple because when I will solder all the parts like 
 
 <img width="1383" height="811" alt="25" src="https://github.com/user-attachments/assets/64f46db0-911e-4060-b444-47c031d44bfb" />
 
-**Total Time Spent - 1.8hr**
+**Total Time Spent - 2hr**
 
 ---
 

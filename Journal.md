@@ -1,4 +1,4 @@
-
+<img width="1470" height="956" alt="34" src="https://github.com/user-attachments/assets/4b40756f-1598-41b4-a4e1-f327fa9399d2" />
 | Title | Twin Key |
 | :-- | :---|
 |Author |Sadrita Neogi|
@@ -179,10 +179,53 @@ For today I will not do any work as I need to do my school work now and suddenly
 
 **Total Time Spent - 0.5hr**
 
---
+---
+
+## July 5th : Working on Keyboard Case (CAD)
+Today I first took the measurement of the PCB from the PCB designing software and noted down then I move to fusion 360 where I mostly design all of the CAD model for my projects and I went there. I design and simple elegant kiss for that which took me a lot of time and iteration so that it can fit perfectly and I also export the PCB step file. and use it to the CAD model also I have added keycaps to the keyboard which is pretty good to see.
+
+<img width="1470" height="956" alt="26" src="https://github.com/user-attachments/assets/588d9252-c923-4c0a-9d1c-4b7bd80dc98d" />
+
+
+<img width="1470" height="956" alt="27" src="https://github.com/user-attachments/assets/481aa090-6083-46a7-9e3e-b59e1ae3cbcb" />
 
 
 
+<img width="1470" height="956" alt="28" src="https://github.com/user-attachments/assets/d5fe3158-548c-4058-8bad-2adcbfa8e76a" />
 
 
+<img width="1470" height="956" alt="29" src="https://github.com/user-attachments/assets/4025c26e-feee-4660-b54e-91c49929e420" />
+
+
+<img width="1470" height="956" alt="30" src="https://github.com/user-attachments/assets/469c111a-5029-44d9-91ba-894f15782d7d" />
+
+<img width="1470" height="956" alt="31" src="https://github.com/user-attachments/assets/0689d106-45ff-4503-b872-f6423610dbbb" />
+
+<img width="1470" height="956" alt="32" src="https://github.com/user-attachments/assets/b4d2f179-e2e1-43c6-b70c-0fcafc8753df" />
+
+
+<img width="1470" height="956" alt="33" src="https://github.com/user-attachments/assets/48b2b069-c556-4821-9817-29c7c32fe248" />
+
+**Now I move to add the keycaps in the model to make the final assemble file**
+
+<img width="1470" height="956" alt="34" src="https://github.com/user-attachments/assets/8171051d-4fc9-4284-a1b1-e67b8dc5d54c" />
+
+
+<img width="1470" height="956" alt="35" src="https://github.com/user-attachments/assets/2aab9220-e624-4267-935d-84b4075eaafc" />
+
+<img width="1470" height="956" alt="36" src="https://github.com/user-attachments/assets/d4d694ce-2f7f-4271-910f-06c18f235da3" />
+
+<img width="1470" height="956" alt="37" src="https://github.com/user-attachments/assets/5db3e152-19d4-43e1-8f2c-5ac84e98da81" />
+
+<img width="1470" height="956" alt="38" src="https://github.com/user-attachments/assets/464d83b1-469d-4d0d-bb49-956da2157208" />
+
+<img width="1470" height="956" alt="39" src="https://github.com/user-attachments/assets/ad779477-4dd5-4d65-833b-ae5260a2da41" />
+
+<img width="1470" height="956" alt="40" src="https://github.com/user-attachments/assets/6f2f9bda-90bf-481b-836e-6237bf6f0277" />
+
+<img width="1470" height="956" alt="41" src="https://github.com/user-attachments/assets/e9303802-fbb9-463e-92f6-8a40f9900525" />
+
+<img width="1470" height="956" alt="42" src="https://github.com/user-attachments/assets/6119f355-b0fd-4568-8852-8f36c2150294" />
+
+**Total Time Spent - 3.3hr**
 

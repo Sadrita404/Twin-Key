@@ -15,12 +15,25 @@
 |:-- |:--|
 |Author | Sadrita Neogi|
 
-### Overview
-This split keyboard is basically fixes everything annoying about standard typing. We took the logic of an ortholinear grid (where everything is predictable) and mashed it together with a column stagger that actually matches how long your fingers are. For me this type of form factor keyboard is good for long hours of typing
+### what I have built
+
+This split keyboard is basically fixes everything annoying about standard typing. We took the logic of an ortholinear grid (where everything is predictable) and mashed it together with a column stagger that actually matches how long your fingers are. For me this type of form factor keyboard is good for long hours of typing.
 
 
 ### Why I choose this project?
 So behind choosing this project is basically I love split keyboard and the way it just fold and compact. It is easy to carry and it is good for writing for long hours, so I wanted to make one for myself not to buy it but to make it for myself and customisable, so this is the reason I choose this project.
+
+
+### what I have learned
+
+Through out making this project I have learned a lot of thing but the main that I gain strengh is listed below 
+
+* PCB design using KiCad
+* Mechanical keyboard architecture
+* KMK scripting
+* Fusion 360 CAD Work 
+* How to choose Part's for project in budget
+
 
 ### Features 
 
@@ -144,7 +157,7 @@ QMK source is available under [firmware/QMK/keyboards/Twin-Key](https://github.c
 | **Total** | | | | **$99.89** | |
 | **Round of budget** | | | | **$100** | |
 
-I have provided the links for the parts I will be self-sourcing, so that if readers want to recreate this, they will be able to get all the parts.This is also updated on the [Bom.csv](/Bom.csv)
+I have provided the links for the parts I will be self-sourcing, so that if readers want to recreate this, they will be able to get all the parts.This is also updated on the [bom.csv](/bom.csv)
 
 Project Under Hack Club
 

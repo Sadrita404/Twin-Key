@@ -34,7 +34,7 @@ And the type of keyboard that I am building for that, I think it should be enoug
 
 I have also went online to see the types of the split keyboard layout that are widely used , but I want to be make one custom for me , I will try to design my own ..
 
-**Total Time Spent - 1.5hr**
+**Total Time Spent - 2.4hr**
 
 ---
 
@@ -101,7 +101,7 @@ Finally, after a lot of time, I have finally completed the PCB designing part st
 
 
 
-**Total Time Spent - 4.2hr**
+**Total Time Spent - 4.6hr**
 
 
 ## July 2nd : Completing the rest of the PCB part
@@ -145,7 +145,7 @@ I make the PCB silk screen simple because when I will solder all the parts like 
 
 <img width="1383" height="811" alt="25" src="https://github.com/user-attachments/assets/64f46db0-911e-4060-b444-47c031d44bfb" />
 
-**Total Time Spent - 1.5hr**
+**Total Time Spent - 1.8hr**
 
 
 

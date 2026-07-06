@@ -3,7 +3,7 @@
 | :-- | :---|
 |Author |Sadrita Neogi|
 |Type | Split Keyboard |
-Total Hrs | 19.4 |
+Total Hrs | 20.5 |
 
 
 ## June 24th : Research about the micro controller for the keyboard
@@ -273,3 +273,27 @@ So today I started woriking on the right side of the keyboard mostly I will be a
 
 **Total Time Spent - 3.3hr**
 
+---
+
+## July 7th : Making the BOM for this project 
+
+This is one of the last crucial part of every project, so this is the time when I created the budget of the keyboard. In earlier, I have created an rough bill of material, but this is the final. I need to go through all the components and parts again, and then I can make the final bill of material.
+
+<img width="1448" height="812" alt="bill 1" src="https://github.com/user-attachments/assets/150c7b84-3ac7-4db1-b431-e004a734f951" />
+
+<img width="1287" height="704" alt="Screenshot 2026-07-07 at 12 53 02 AM" src="https://github.com/user-attachments/assets/f96e2453-9dc7-4f53-b88c-42f2f0939609" />
+
+<img width="1389" height="793" alt="Screenshot 2026-07-07 at 12 53 13 AM" src="https://github.com/user-attachments/assets/2bc9e1ae-d4d4-4174-8b3f-f1d146a304c7" />
+
+<img width="1416" height="762" alt="Screenshot 2026-07-07 at 12 53 24 AM" src="https://github.com/user-attachments/assets/09c1c48b-4bea-43a3-b944-72a3505198cb" />
+
+<img width="1396" height="801" alt="Screenshot 2026-07-07 at 12 53 35 AM" src="https://github.com/user-attachments/assets/1a0f033a-a41e-408d-9028-f42cd43c5bc2" />
+
+<img width="1180" height="762" alt="Screenshot 2026-07-07 at 12 53 51 AM" src="https://github.com/user-attachments/assets/36122d77-6347-4fc5-85d2-59830fdf237f" />
+
+
+<img width="1402" height="814" alt="Screenshot 2026-07-07 at 12 54 34 AM" src="https://github.com/user-attachments/assets/8aa8e098-b402-473c-8486-4d6a2f643c08" />
+
+<img width="1433" height="795" alt="Screenshot 2026-07-07 at 12 51 01 AM" src="https://github.com/user-attachments/assets/133dd659-5f94-449d-8b1a-24c1f61140d0" />
+
+**Total Time Spent - 1.1hr**

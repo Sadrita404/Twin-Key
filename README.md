@@ -144,5 +144,7 @@ QMK source is available under [firmware/QMK/keyboards/Twin-Key](https://github.c
 | **Total** | | | | **$99.89** | |
 | **Round of budget** | | | | **$100** | |
 
+I have provided the links for the parts I will be self-sourcing, so that if readers want to recreate this, they will be able to get all the parts.This is also updated on the [Bom.csv](/Bom.csv)
+
 Project Under Hack Club
 

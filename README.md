@@ -1,3 +1,16 @@
+
+<div align="center">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center" style="background: #ffffff; border: 1px solid #d0d7de; border-radius: 12px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <img src="https://github.com/user-attachments/assets/8942e808-1710-489f-a4be-4ef55905c665" width="100%" max-width="800px" alt="Rough Layout For The PCB" style="border-radius: 6px;" />
+        <div style="margin-top: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 13px; color: #57606a; font-weight: 500;">
+      </td>
+    </tr>
+  </table>
+</div>
+
+
 |Title | Twin Key |
 |:-- |:--|
 |Author | Sadrita Neogi|

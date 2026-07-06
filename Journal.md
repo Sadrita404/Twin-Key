@@ -80,7 +80,7 @@ So previously I have completed a schematic of the PCB and I take one day gap bec
 
 **updating PCB from schematic**
 
-<img width="1470" height="883" alt="10" src="https://github.com/user-attachments/assets/725d33ea-b5d5-4568-ad2f-b12bbb85a0d6" />
+<img width="1099" height="634" alt="10" src="https://github.com/user-attachments/assets/05511e62-70db-40a1-ab16-3f000932e0ef" />
 
 
 <img width="620" height="685" alt="11" src="https://github.com/user-attachments/assets/8b20f169-b127-4fbf-97e9-38b4910e06e6" />

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twin Key — A Reversible Split Mechanical Keyboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --surface:#F7F8FA;
+    --surface-2:#F0F2F5;
+    --border:#E6E8EC;
+    --ink:#0B0E14;
+    --ink-soft:#5B6472;
+    --muted:#8A93A3;
+    --accent:#1F6F52;
+    --accent-soft:#E9F3EE;
+    --accent-line:#C9E1D6;
+    --good:#0EA35C;
+    --good-soft:#E7F8EF;
+    --hc-red:#EC3750;
+    --radius:16px;
+    --maxw:1180px;
+    --shadow-sm:0 1px 2px rgba(11,14,20,0.04);
+    --shadow-md:0 10px 30px -12px rgba(11,14,20,0.14);
+    --shadow-lg:0 24px 60px -20px rgba(11,14,20,0.22);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent-soft); color:var(--accent);}
+
+  h1,h2,h3,h4{margin:0; letter-spacing:-0.03em; font-weight:800;}
+  a{color:var(--accent); text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* ============ SCROLL PROGRESS ============ */
+  .progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:var(--accent);
+    z-index:200; transition:width .1s linear;
+  }
+
+  /* ============ REVEAL ANIMATION ============ */
+  .reveal{
+    opacity:0; transform:translateY(28px);
+    transition:opacity .7s cubic-bezier(.16,.8,.24,1), transform .7s cubic-bezier(.16,.8,.24,1);
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal-stagger.in > *{opacity:1; transform:translateY(0);}
+  .reveal-stagger > *{
+    opacity:0; transform:translateY(18px);
+    transition:opacity .6s cubic-bezier(.16,.8,.24,1), transform .6s cubic-bezier(.16,.8,.24,1);
+  }
+  .reveal-stagger.in > *:nth-child(1){transition-delay:.02s;}
+  .reveal-stagger.in > *:nth-child(2){transition-delay:.08s;}
+  .reveal-stagger.in > *:nth-child(3){transition-delay:.14s;}
+  .reveal-stagger.in > *:nth-child(4){transition-delay:.2s;}
+  .reveal-stagger.in > *:nth-child(5){transition-delay:.26s;}
+  .reveal-stagger.in > *:nth-child(6){transition-delay:.32s;}
+  .reveal-stagger.in > *:nth-child(7){transition-delay:.38s;}
+  .reveal-stagger.in > *:nth-child(8){transition-delay:.44s;}
+  .reveal-stagger.in > *:nth-child(9){transition-delay:.5s;}
+  .reveal-stagger.in > *:nth-child(10){transition-delay:.56s;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal, .reveal-stagger > *{opacity:1 !important; transform:none !important; transition:none !important;}
+    *{animation:none !important;}
+  }
+
+  /* ============ NAV ============ */
+  header.top{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,0.78);
+    backdrop-filter:blur(10px) saturate(1.4);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, box-shadow .3s ease;
+  }
+  header.top.scrolled{border-bottom-color:var(--border); box-shadow:0 1px 0 rgba(11,14,20,0.02);}
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 32px;
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-weight:800; font-size:16.5px; letter-spacing:-0.02em;
+  }
+  .brand .mark{
+    width:26px; height:26px; border-radius:7px;
+    background:var(--accent);
+    position:relative; flex:none;
+  }
+  .brand .mark::after{
+    content:"";
+    position:absolute; inset:7px;
+    background:#fff; border-radius:2px; opacity:.9;
+  }
+  nav.links{display:none; gap:26px; font-size:14px; font-weight:500; color:var(--ink-soft);}
+  @media(min-width:860px){ nav.links{display:flex;} }
+  nav.links a{color:var(--ink-soft); transition:color .15s;}
+  nav.links a:hover{color:var(--ink);}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:600; font-size:14px;
+    padding:9px 16px; border-radius:9px;
+    border:1px solid var(--border);
+    background:#fff; color:var(--ink);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow-md); border-color:#D6D9E0;}
+  .btn.primary{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .btn.primary:hover{background:#000;}
+  .btn svg{width:16px; height:16px; flex:none;}
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:96px 0 76px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute; top:0; left:0; right:0;
+    height:420px;
+    background:var(--surface);
+    border-bottom:1px solid var(--border);
+    z-index:0;
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; z-index:1; text-align:center; max-width:820px; margin:0 auto;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600;
+    color:var(--accent);
+    background:var(--accent-soft);
+    border:1px solid var(--accent-line);
+    padding:6px 14px 6px 10px;
+    border-radius:999px;
+    margin-bottom:26px;
+  }
+  .eyebrow img{width:16px; height:16px; border-radius:4px;}
+  h1.title{
+    font-size:clamp(40px,6.4vw,68px);
+    line-height:1.04;
+    color:var(--ink);
+  }
+  h1.title .accent-text{
+    color:var(--accent);
+  }
+  .hero p.lede{
+    margin:22px auto 0;
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:56ch;
+  }
+  .hero-ctas{
+    display:flex; gap:12px; justify-content:center; margin-top:34px; flex-wrap:wrap;
+  }
+  .stat-row{
+    display:flex; justify-content:center; gap:0; margin-top:64px;
+    border:1px solid var(--border); border-radius:var(--radius);
+    overflow:hidden; background:var(--surface);
+  }
+  .stat{
+    flex:1; padding:22px 18px; text-align:center; border-right:1px solid var(--border);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .num{font-size:26px; font-weight:800; letter-spacing:-0.02em;}
+  .stat .lbl{font-size:12.5px; color:var(--muted); margin-top:4px; font-weight:500;}
+
+  .hero-visual{
+    margin-top:56px;
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:16px;
+    box-shadow:var(--shadow-lg);
+  }
+  .hero-visual img{border-radius:12px;}
+  .hero-visual .cap{
+    display:flex; justify-content:space-between;
+    font-size:12px; color:var(--muted);
+    padding:12px 6px 2px;
+    font-weight:500;
+  }
+
+  /* ============ SECTION SCAFFOLDING ============ */
+  section{ padding:88px 0; border-top:1px solid var(--border); }
+  .section-head{ margin-bottom:44px; max-width:640px; }
+  .kicker{
+    display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:14px;
+  }
+  h2.htitle{ font-size:clamp(28px,3.6vw,38px); color:var(--ink); }
+  .section-sub{ color:var(--ink-soft); font-size:16px; margin-top:12px; }
+
+  .prose{max-width:74ch; color:var(--ink-soft); font-size:16.5px;}
+  .prose p{margin:0 0 16px;}
+  .prose strong{color:var(--ink); font-weight:700;}
+
+  .two-col{ display:grid; grid-template-columns:1fr; gap:32px; }
+  @media(min-width:880px){ .two-col{grid-template-columns:1fr 1fr;} }
+
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:28px;
+    transition:transform .25s cubic-bezier(.16,.8,.24,1), box-shadow .25s ease, border-color .25s ease;
+  }
+  .card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-md); border-color:#DEE1E7; }
+  .quote-card{ position:relative; }
+  .quote-card::before{
+    content:"“"; position:absolute; top:12px; left:20px;
+    font-size:56px; font-weight:800; color:var(--accent-line); line-height:1; font-family:Georgia,serif;
+  }
+  .quote-card p{ position:relative; margin:0; color:var(--ink-soft); font-size:16.5px; padding-top:18px; }
+
+  /* ============ SKILLS MARQUEE ============ */
+  .marquee{
+    overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  }
+  .marquee-track{
+    display:flex; gap:14px; width:max-content;
+    animation:scrollx 26s linear infinite;
+  }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollx{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .skill{
+    display:flex; align-items:center; gap:10px;
+    background:#fff; border:1px solid var(--border);
+    padding:13px 18px; border-radius:11px;
+    font-size:14px; font-weight:600; color:var(--ink);
+    white-space:nowrap;
+  }
+  .skill .dot{ width:8px; height:8px; border-radius:50%; background:var(--good); flex:none; }
+
+  /* ============ FEATURE GRID ============ */
+  .feat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; }
+  .feat{
+    background:#fff; border:1px solid var(--border); border-radius:14px;
+    padding:22px;
+    transition:transform .25s cubic-bezier(.16,.8,.24,1), box-shadow .25s ease, border-color .25s ease;
+  }
+  .feat:hover{ transform:translateY(-4px); box-shadow:var(--shadow-md); border-color:#DEE1E7; }
+  .feat .ico{
+    width:36px; height:36px; border-radius:9px; margin-bottom:14px;
+    background:var(--accent-soft); color:var(--accent);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;
+  }
+  .feat strong{ display:block; font-size:15.5px; margin-bottom:4px; font-weight:700; }
+  .feat p{ margin:0; font-size:14.5px; color:var(--ink-soft); }
+
+  /* ============ COMPONENTS / BOM TABLE ============ */
+  .table-wrap{ background:#fff; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+  table{ width:100%; border-collapse:collapse; font-size:14.5px; }
+  thead th{
+    text-align:left; font-size:11.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--ink-soft); background:var(--surface); padding:14px 18px; border-bottom:1px solid var(--border);
+  }
+  tbody td{ padding:14px 18px; border-top:1px solid var(--border); color:var(--ink-soft); }
+  tbody tr{ transition:background .15s ease; }
+  tbody tr:hover{ background:var(--surface); }
+  tbody td:first-child{ color:var(--ink); font-weight:600; }
+  td.num, th.num{ font-family:'IBM Plex Mono',monospace; text-align:right; }
+  tbody a{ color:var(--accent); font-weight:600; }
+  tfoot td{ font-weight:700; color:var(--ink); border-top:2px solid var(--ink); padding:15px 18px; font-family:'IBM Plex Mono',monospace; }
+  tfoot tr.grand td{ background:var(--good-soft); font-size:16px; color:#0B7A43; }
+  .table-scroll{ overflow-x:auto; }
+
+  /* ============ FIRMWARE ============ */
+  .fw-box{
+    background:var(--ink); color:#EDEFF5; border-radius:20px;
+    padding:36px; display:grid; gap:24px; grid-template-columns:1fr;
+    position:relative; overflow:hidden;
+  }
+  @media(min-width:760px){ .fw-box{grid-template-columns:1.1fr 0.9fr;} }
+  .fw-box h3{ color:#fff; font-size:21px; margin-bottom:12px; }
+  .fw-box p{ color:#B7BDCC; font-size:14.5px; margin:0 0 12px; position:relative; z-index:1;}
+  .term{
+    font-family:'IBM Plex Mono',monospace; background:rgba(255,255,255,0.1);
+    padding:2px 8px; border-radius:6px; color:#8FD6B4; font-size:13.5px;
+  }
+  .fw-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; position:relative; z-index:1;}
+  .fw-list li{
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+    border-radius:10px; padding:13px 15px; font-size:14px; color:#D7DAE4;
+  }
+  .fw-list a{ color:#8FD6B4; }
+  .fw-list b{ color:#fff; }
+
+  /* ============ GALLERY ============ */
+  .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  @media(max-width:700px){ .gallery{grid-template-columns:repeat(2,1fr);} }
+  .gallery figure{
+    margin:0; overflow:hidden; border-radius:12px; border:1px solid var(--border);
+    background:var(--surface); aspect-ratio:4/3; position:relative;
+  }
+  .gallery img{ width:100%; height:100%; object-fit:cover; transition:transform .5s cubic-bezier(.16,.8,.24,1); }
+  .gallery figure:hover img{ transform:scale(1.08); }
+
+  /* ============ PCB SIDES ============ */
+  .pcb-sides{ display:grid; grid-template-columns:1fr; gap:20px; }
+  @media(min-width:760px){ .pcb-sides{grid-template-columns:1fr 1fr;} }
+  .pcb-card{ background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:18px; text-align:center; }
+  .pcb-card img{ border-radius:12px; margin-bottom:14px; }
+  .pcb-card .tag{ font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+
+  .render-stack{ display:flex; flex-direction:column; gap:16px; }
+  .render-stack img{ border-radius:var(--radius); border:1px solid var(--border); }
+
+  /* ============ CTA / FOOTER ============ */
+  .cta{
+    text-align:center; padding:70px 40px; border-radius:24px;
+    background:var(--ink);
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .cta h2{ color:#fff; font-size:clamp(26px,3.6vw,36px); position:relative; }
+  .cta p{ color:#C6CAD6; margin-top:14px; position:relative; }
+  .cta .hero-ctas{ margin-top:28px; position:relative; }
+  .cta .btn.primary{ background:#fff; color:var(--ink); border-color:#fff; }
+  .cta .btn{ background:rgba(255,255,255,0.06); color:#fff; border-color:rgba(255,255,255,0.18); }
+
+  footer{ padding:50px 0 60px; border-top:1px solid var(--border); }
+  .footer-row{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; align-items:center; }
+  .footer-brand{ font-weight:800; color:var(--ink); display:flex; align-items:center; gap:8px; }
+  .footer-note{ color:var(--muted); font-size:13.5px; max-width:52ch; }
+  .badge{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:999px; color:var(--ink-soft); }
+  .badge img{ width:15px; height:15px; }
+
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-track{ background:#fff; }
+  ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:6px; }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progressBar"></div>
+
+<header class="top" id="siteHeader">
+  <div class="nav">
+    <div class="brand"><span class="mark"></span> Twin Key</div>
+    <nav class="links">
+      <a href="#overview">Overview</a>
+      <a href="#features">Features</a>
+      <a href="#bom">BOM</a>
+      <a href="#firmware">Firmware</a>
+      <a href="#journal">Journal</a>
+      <a href="#pcb">PCB</a>
+    </nav>
+    <a class="btn primary" href="https://github.com/Sadrita404/Twin-Key" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.5.11-3.12 0 0 .97-.31 3.2 1.18.93-.26 1.93-.39 2.92-.39.99 0 1.99.13 2.92.39 2.23-1.5 3.2-1.18 3.2-1.18.63 1.62.23 2.82.11 3.12.75.8 1.2 1.82 1.2 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17v3.22c0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+      GitHub
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" style="border-top:none;">
+    <div class="hero-glow"></div>
+    <div class="wrap hero-inner">
+      <div class="eyebrow"><img src="https://assets.hackclub.com/icon-rounded.svg" alt="Hack Club"> Built for a Hack Club Keeb ysws </div>
+      <h1 class="title">A split keyboard<br>built <span class="accent-text">around your hands.</span></h1>
+      <p class="lede">Twin Key is an 18×18 reversible split mechanical keyboard — column‑staggered, dual‑MCU, hot‑swappable for every key, and designed from scratch on a $100 budget.</p>
+      <div class="hero-ctas">
+        <a class="btn primary" href="https://github.com/Sadrita404/Twin-Key" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.5.11-3.12 0 0 .97-.31 3.2 1.18.93-.26 1.93-.39 2.92-.39.99 0 1.99.13 2.92.39 2.23-1.5 3.2-1.18 3.2-1.18.63 1.62.23 2.82.11 3.12.75.8 1.2 1.82 1.2 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17v3.22c0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+          View on GitHub
+        </a>
+        <a class="btn" href="#bom">See the build cost</a>
+      </div>
+
+      <div class="stat-row reveal">
+        <div class="stat"><div class="num" data-count="18">0</div><div class="lbl">Keys per side</div></div>
+        <div class="stat"><div class="num" data-count="100" data-prefix="$">$0</div><div class="lbl">Total budget</div></div>
+        <div class="stat"><div class="num" data-count="2">0</div><div class="lbl">RP2040 MCUs</div></div>
+        <div class="stat"><div class="num" data-count="36">0</div><div class="lbl">Hot‑swap sockets</div></div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="hero-visual reveal">
+        <img src="https://github.com/user-attachments/assets/8942e808-1710-489f-a4be-4ef55905c665" alt="Rough layout for the PCB">
+        <div class="cap"><span>Early PCB layout, drafted in KiCad</span><span>fig. 01</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+
+    <!-- ============ OVERVIEW ============ -->
+    <section id="overview">
+      <div class="section-head reveal">
+        <span class="kicker">Overview</span>
+        <h2 class="htitle">What I built</h2>
+      </div>
+      <div class="prose reveal">
+        <p>This split keyboard is basically built to fix everything annoying about standard typing. It takes the logic of an <strong>ortholinear grid</strong>, where every key sits in a predictable straight column, and mashes it together with a <strong>column stagger</strong> that actually matches how long your fingers are.</p>
+        <p>For long stretches of typing, that combination is exactly the kind of form factor that keeps hands relaxed instead of cramped — which is the whole point of this build.</p>
+      </div>
+    </section>
+
+    <!-- ============ WHY ============ -->
+    <section>
+      <div class="section-head reveal">
+        <span class="kicker">Motivation</span>
+        <h2 class="htitle">Why this project</h2>
+      </div>
+      <div class="two-col">
+        <div class="card quote-card reveal">
+          <p>Behind choosing this project is basically that I love split keyboards and the way they fold up and stay compact. It's easy to carry, and it's good for writing over long hours — so I wanted to make one for myself, not buy one, and make it fully customisable. That's the reason I chose this project.</p>
+        </div>
+        <div class="prose reveal">
+          <p>Buying a split keyboard off the shelf gets you someone else's decisions baked into the PCB. Designing one from scratch means every trace, footprint, and firmware layer answers to how <strong>this</strong> person actually types — and gets to be rebuilt the moment that changes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LEARNED ============ -->
+    <section>
+      <div class="section-head reveal">
+        <span class="kicker">Skills gained</span>
+        <h2 class="htitle">What I learned</h2>
+      </div>
+      <div class="marquee reveal">
+        <div class="marquee-track">
+          <div class="skill"><span class="dot"></span>PCB design using KiCad</div>
+          <div class="skill"><span class="dot"></span>Mechanical keyboard architecture</div>
+          <div class="skill"><span class="dot"></span>KMK scripting</div>
+          <div class="skill"><span class="dot"></span>Fusion 360 CAD work</div>
+          <div class="skill"><span class="dot"></span>Sourcing parts on a budget</div>
+          <div class="skill"><span class="dot"></span>PCB design using KiCad</div>
+          <div class="skill"><span class="dot"></span>Mechanical keyboard architecture</div>
+          <div class="skill"><span class="dot"></span>KMK scripting</div>
+          <div class="skill"><span class="dot"></span>Fusion 360 CAD work</div>
+          <div class="skill"><span class="dot"></span>Sourcing parts on a budget</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section id="features">
+      <div class="section-head reveal">
+        <span class="kicker">Capabilities</span>
+        <h2 class="htitle">Features</h2>
+        <p class="section-sub">Everything the board does, from layout to firmware.</p>
+      </div>
+      <div class="feat-grid reveal-stagger">
+        <div class="feat"><div class="ico">01</div><strong>18×18 split layout</strong><p>Two independent halves, eighteen keys per side.</p></div>
+        <div class="feat"><div class="ico">02</div><strong>TRRS halves</strong><p>Connected with a standard 3.5mm TRRS‑to‑TRRS cable.</p></div>
+        <div class="feat"><div class="ico">03</div><strong>Dual RP2040 control</strong><p>RP2040‑Zero on the left, RP2040‑Tiny on the right.</p></div>
+        <div class="feat"><div class="ico">04</div><strong>Reversible PCB</strong><p>One board design serves both halves, cutting PCB waste.</p></div>
+        <div class="feat"><div class="ico">05</div><strong>Wired connection</strong><p>No wireless link — stable, low‑latency, always on.</p></div>
+        <div class="feat"><div class="ico">06</div><strong>Ergonomic first</strong><p>Column stagger and split geometry built around hand shape.</p></div>
+        <div class="feat"><div class="ico">07</div><strong>QMK firmware</strong><p>Full QMK support, remappable through VIA.</p></div>
+        <div class="feat"><div class="ico">08</div><strong>Hot‑swap sockets</strong><p>Every single key socket is hot‑swappable.</p></div>
+        <div class="feat"><div class="ico">09</div><strong>Low profile</strong><p>Slim Kailh Choc switches keep the whole board thin.</p></div>
+        <div class="feat"><div class="ico">10</div><strong>Custom 3D‑printed case</strong><p>Case and top plate both designed and printed in‑house.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ COMPONENTS ============ -->
+    <section>
+      <div class="section-head reveal">
+        <span class="kicker">Parts list</span>
+        <h2 class="htitle">Components used</h2>
+      </div>
+      <div class="table-wrap reveal">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Item</th></tr></thead>
+            <tbody>
+              <tr><td>Custom PCB</td></tr>
+              <tr><td>RP2040‑Zero (left side)</td></tr>
+              <tr><td>RP2040‑Tiny (right side)</td></tr>
+              <tr><td>Kailh Choc v2 Low Profile Switches</td></tr>
+              <tr><td>Kailh Choc PG1350 Hot Swap Sockets</td></tr>
+              <tr><td>CFX MX Low Profile Keycaps</td></tr>
+              <tr><td>1N4148 SOD‑123 SMD Diode</td></tr>
+              <tr><td>PJ‑320A TRRS Jack</td></tr>
+              <tr><td>M2×3 heat‑set threaded inserts</td></tr>
+              <tr><td>M2×5 countersunk screws</td></tr>
+              <tr><td>3.5mm TRRS to TRRS cable</td></tr>
+              <tr><td>Type‑C to Type‑C cable</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FIRMWARE ============ -->
+    <section id="firmware">
+      <div class="section-head reveal">
+        <span class="kicker">Setup</span>
+        <h2 class="htitle">Firmware</h2>
+      </div>
+      <div class="fw-box reveal">
+        <div>
+          <h3>Precompiled, VIA‑enabled</h3>
+          <p>Flash <span class="term">twin_key_sadrita.uf2</span> from the Firmware folder onto both RP2040 MCUs to get the board running.</p>
+          <p>Then load <a href="https://github.com/Sadrita404/Twin-Key/blob/main/Firmware/QMK/keyboards/twin_key/via.json">via.json</a> under the Design tab in <a href="https://usevia.app">VIA</a> to remap keys live, no recompiling required.</p>
+          <p>Full QMK source lives at <a href="https://github.com/Sadrita404/Twin-Key/tree/main/Firmware/QMK/keyboards/twin_key">firmware/QMK/keyboards/Twin‑Key</a> for anyone who wants to go deeper than the config file.</p>
+        </div>
+        <ul class="fw-list">
+          <li><b>Step 1 —</b> Flash <span class="term">twin_key_sadrita.uf2</span> to the RP2040‑Zero and RP2040‑Tiny.</li>
+          <li><b>Step 2 —</b> Open <a href="https://usevia.app">usevia.app</a>, go to Design, and import <span class="term">via.json</span>.</li>
+          <li><b>Step 3 —</b> Remap layers directly in VIA — changes apply instantly.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ JOURNAL / BUILD PROCESS ============ -->
+    <section id="journal">
+      <div class="section-head reveal">
+        <span class="kicker">Build log</span>
+        <h2 class="htitle">Building process</h2>
+        <p class="section-sub">Full write‑up in <a href="https://github.com/Sadrita404/Twin-Key/blob/main/Journal.md">Journal.md</a></p>
+      </div>
+      <div class="gallery reveal-stagger">
+        <figure><img src="https://github.com/user-attachments/assets/a658099e-e0c1-4440-b17c-a0f4168fa6ed" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/0d5e2b55-575e-4615-b95c-1178ef51f906" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/fed89f04-1a26-4528-b030-14e272187758" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/1d4ac166-9032-4e8b-81b3-bca63945b287" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/b6106557-6cc1-422f-a06e-9819eab307c9" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/f7200940-218c-4f83-afef-82e2102ea0ec" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/f8e1f592-66fa-409a-b0b4-051ae611a034" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/5a249239-1e32-498f-a827-63e4aadc1099" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/47df6155-37a1-4970-b3b0-dc0a216bca05" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/f624a89b-4721-4e76-8dbb-bac5cc366549" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/5bb80604-8176-4b06-afb1-6173f0ba5527" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/5fb7f6c9-f681-4d75-a019-6ad055f45853" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/fa758cdd-f25e-40b3-84ce-19535d9a558c" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/c6b458a8-6334-46f0-a84a-aca449889995" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/08be6f78-4e54-4cc7-bbab-1bea4a3e0a39" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/2c8e80d8-f91f-4fe6-9530-d7986ebdfde0" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/ef49495b-dbca-4ef3-8490-e93663a01857" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/20116e59-085e-4cf9-a5f6-f96ec94b4eec" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/95a5a9b9-6e2a-4ded-8b3d-5261e04bc6d9" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/a5fd5569-5b7d-42e2-9519-cb96d44845f7" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/3483d5a9-e958-44a3-8ec0-04c7cbdfa462" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/c7fb158a-cfd8-45f8-b0ec-8ae7ba9352a8" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/f1764ff6-8be8-4e82-a9f6-b893cfb4bb53" alt="build photo"></figure>
+        <figure><img src="https://github.com/user-attachments/assets/2367de9e-3259-4ea0-b6bf-c1e8562f7fe7" alt="build photo"></figure>
+      </div>
+    </section>
+
+    <!-- ============ FINAL PCB ============ -->
+    <section id="pcb">
+      <div class="section-head reveal">
+        <span class="kicker">Hardware</span>
+        <h2 class="htitle">Final PCB</h2>
+        <p class="section-sub">Both sides of the reversible board.</p>
+      </div>
+      <div class="pcb-sides reveal-stagger">
+        <div class="pcb-card">
+          <img src="https://github.com/user-attachments/assets/a4178a2c-75d3-4db2-8528-6f2520c6f13e" alt="Front side view">
+          <span class="tag">▲ Left Side</span>
+        </div>
+        <div class="pcb-card">
+          <img src="https://github.com/user-attachments/assets/11a62ee8-de7c-49f5-a1b0-233c9f363e79" alt="Back side view">
+          <span class="tag">▲ Right Side</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL RENDER ============ -->
+    <section>
+      <div class="section-head reveal">
+        <span class="kicker">Fusion 360</span>
+        <h2 class="htitle">Final render</h2>
+      </div>
+      <div class="render-stack reveal-stagger">
+        <img src="https://github.com/user-attachments/assets/4e8f50fd-025e-4cc5-ae18-0321aeed9e14" alt="render 1">
+        <img src="https://github.com/user-attachments/assets/e759321b-a368-4c93-a1c9-36371b1dd2f1" alt="render 2">
+        <img src="https://github.com/user-attachments/assets/63603048-2754-44f4-a2a2-ea6382959d3f" alt="render 3">
+      </div>
+    </section>
+
+    <!-- ============ BOM ============ -->
+    <section id="bom">
+      <div class="section-head reveal">
+        <span class="kicker">Cost breakdown</span>
+        <h2 class="htitle">Bill of materials</h2>
+        <p class="section-sub">~$100 total budget, with sourcing links for every self‑sourced part.</p>
+      </div>
+      <div class="prose reveal" style="margin-bottom:22px;">
+        <p>Links are included for every part that's self‑sourced, so anyone recreating this build can track down the exact same components. The same data is also kept up to date in <span class="term" style="background:var(--surface-2); color:var(--ink);">bom.csv</span> in the repository.</p>
+      </div>
+      <div class="table-wrap reveal">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Purpose</th>
+                <th class="num">Qty</th>
+                <th class="num">Unit</th>
+                <th class="num">Total</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>PCB (MOQ 5)</td><td>The main board</td><td class="num">5</td><td class="num">$1.54</td><td class="num">$7.70</td><td><a href="https://jlcpcb.com/">JLC PCB</a></td></tr>
+              <tr><td>RP2040‑Zero</td><td>Microcontroller, left side</td><td class="num">1</td><td class="num">$4.43</td><td class="num">$4.43</td><td><a href="https://robu.in/product/waveshare-rp2040-zero-without-header/">Robu</a></td></tr>
+              <tr><td>RP2040‑Tiny</td><td>Microcontroller, right side</td><td class="num">1</td><td class="num">$6.26</td><td class="num">$6.26</td><td><a href="https://robu.in/product/waveshare-rp2350-tiny-development-board-based-on-rp2350a-dual-core-dual-architecture-microcontroller/">Robu</a></td></tr>
+              <tr><td>Kailh Choc v2 Switches</td><td>Low profile, to press</td><td class="num">40</td><td class="num">$0.63</td><td class="num">$25.00</td><td><a href="https://neomacro.in/products/kailh-choc-v2-low-profile-switches?variant=51316563345686">Neomacro</a></td></tr>
+              <tr><td>Kailh Choc PG1350 Sockets</td><td>Hot‑swap for switches</td><td class="num">40</td><td class="num">$0.18</td><td class="num">$7.00</td><td><a href="https://neomacro.in/products/kailh-choc-pg1350-hot-swap-sockets">Neomacro</a></td></tr>
+              <tr><td>CFX MX Keycaps</td><td>Low profile keycap set</td><td class="num">1</td><td class="num">$26.30</td><td class="num">$26.30</td><td><a href="https://neomacro.in/products/cfx-mx-low-profile-keycaps">Neomacro</a></td></tr>
+              <tr><td>1N4148 SOD‑123 Diode</td><td>Per‑key diode on PCB</td><td class="num">40</td><td class="num">$0.03</td><td class="num">$1.00</td><td><a href="https://stackskb.com/store/1n4148-sod-123-smd-diode/">Stackskb</a></td></tr>
+              <tr><td>PJ‑320A TRRS Jack</td><td>Wire connection between halves</td><td class="num">2</td><td class="num">$0.50</td><td class="num">$1.00</td><td><a href="https://stackskb.com/store/pj-320a-jack/">Stackskb</a></td></tr>
+              <tr><td>M2×3 Threaded Inserts</td><td>Fixing the case</td><td class="num">20</td><td class="num">$0.02</td><td class="num">$0.40</td><td><a href="https://onlyscrews.in/products/m2-x-3mm-brass-threaded-inserts">Self sourced</a></td></tr>
+              <tr><td>M2×5 Countersunk Screws</td><td>Fixing the case</td><td class="num">20</td><td class="num">$0.03</td><td class="num">$0.60</td><td><a href="https://onlyscrews.in/products/m2-5-x-16mm-phillips-csk-ss-304-screw-dia-2-5mm-length-16mm">Self sourced</a></td></tr>
+              <tr><td>3.5mm TRRS Cable</td><td>Keyboard‑to‑keyboard connection</td><td class="num">1</td><td class="num">$4.80</td><td class="num">$4.80</td><td><a href="https://www.amazon.in/IVON-3-5mm-Cable-Microphone-Compatible/dp/B0G2BPJMXV/">Amazon</a></td></tr>
+              <tr><td>Type‑C to Type‑C Cable</td><td>Powers the microcontroller</td><td class="num">1</td><td class="num">$2.00</td><td class="num">$2.00</td><td><a href="https://www.amazon.in/HAMMER-Braided-Chraging-Compatible-Enabled/dp/B0CXM7FCHC/">Amazon</a></td></tr>
+              <tr><td>3D Print</td><td>Case and top plate</td><td class="num">1</td><td class="num">$0.00</td><td class="num">$0.00</td><td><a href="https://printlegion.hackclub.com/">#printing-legion</a></td></tr>
+              <tr><td>Shipping</td><td>Incl. PCB shipping</td><td class="num">—</td><td class="num">—</td><td class="num">$13.40</td><td>—</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><td colspan="4">Total</td><td class="num">$99.89</td><td></td></tr>
+              <tr class="grand"><td colspan="4">Round Off Budget</td><td class="num">$100</td><td></td></tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section style="border-top:none;">
+      <div class="cta reveal">
+        <h2>Want to build your own Twin Key?</h2>
+        <p>The full KiCad source, firmware, CAD files, and journal are open on GitHub.</p>
+        <div class="hero-ctas">
+          <a class="btn primary" href="https://github.com/Sadrita404/Twin-Key" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.5.11-3.12 0 0 .97-.31 3.2 1.18.93-.26 1.93-.39 2.92-.39.99 0 1.99.13 2.92.39 2.23-1.5 3.2-1.18 3.2-1.18.63 1.62.23 2.82.11 3.12.75.8 1.2 1.82 1.2 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17v3.22c0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+            Sadrita404 / Twin‑Key
+          </a>
+          <a class="btn" href="https://github.com/Sadrita404/Twin-Key/blob/main/Journal.md" target="_blank" rel="noopener">Read the journal</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>
+        <div class="footer-brand"><span class="mark" style="width:20px;height:20px;"></span> Twin Key</div>
+        <p class="footer-note" style="margin-top:10px;">Designed and built by Sadrita Neogi. Full source, journal, and firmware live in the GitHub repository.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <span class="badge"><img src="https://assets.hackclub.com/icon-rounded.svg" alt="Hack Club">Project under Hack Club</span>
+        <span class="badge">QMK · VIA · RP2040</span>
+        <a class="badge" href="https://github.com/Sadrita404/Twin-Key" target="_blank" rel="noopener">Open source on GitHub</a>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script>
+  // Scroll progress bar
+  const progressBar = document.getElementById('progressBar');
+  const header = document.getElementById('siteHeader');
+  function onScroll(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+    header.classList.toggle('scrolled', h.scrollTop > 8);
+  }
+  document.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.12, rootMargin:'0px 0px -60px 0px' });
+  revealEls.forEach(el=>io.observe(el));
+
+  // Count-up stats
+  const counters = document.querySelectorAll('[data-count]');
+  const counterIO = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        const prefix = el.getAttribute('data-prefix') || '';
+        const duration = 1100;
+        const start = performance.now();
+        function tick(now){
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = prefix + Math.round(eased * target);
+          if(p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterIO.unobserve(el);
+      }
+    });
+  }, { threshold:0.5 });
+  counters.forEach(el=>counterIO.observe(el));
+</script>
+
+</body>
+</html>

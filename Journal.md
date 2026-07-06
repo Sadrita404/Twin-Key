@@ -5,7 +5,7 @@
 |Type | Split Keyboard |
 
 
-## July 2nd : Research about the micro controller for the keyboard
+## June 24th : Research about the micro controller for the keyboard
 
 Today I went in Google and search about the different kind of micro controller that I can use in the split keyboard that is cheap and easily available. Also, that can be easily programmable, and everyone can recreate this.
 
@@ -38,7 +38,7 @@ I have also went online to see the types of the split keyboard layout that are w
 
 ---
 
-## July 3rd : Started with the schematic of the PCB
+## June 26th : Started with the schematic of the PCB
 
 So in the previous day, I have already selected the micro controller and pretty much about the layout of the keyboard. So today I will going to make the schematic for the PCB so that I can start working on the PCB board and I can start working on rest of the thing that can be done only after making the schematic because schematic is the first part for making any PCB and for me taking the right footprint from the library with matching it to the data sheet will take me a lot of time, and I finally managed to get all of this.
 
@@ -74,7 +74,7 @@ So in the previous day, I have already selected the micro controller and pretty 
 
 ---
 
-## July 5th : Done With the PCB tracing 
+## June 28th : Done With the PCB tracing 
 
 So previously I have completed a schematic of the PCB and I take one day gap because I was not in my hometown, so after coming I went to look at the schematic, and then I realise that I need to do a lot of work like I have just made the schematic now I need to import that schematic into PCB designing. Then I need to trace all the pads. So today I will do all of that hopefully completed that, like the main problem is the DRC check error,  I don't know. I have done completing all the traces, but suddenly it's showing error. Hopefully, I will try my best this time. I will do it with all my concentration so that nothing gets out and all the pads should be routed.
 
@@ -102,6 +102,50 @@ Finally, after a lot of time, I have finally completed the PCB designing part st
 
 
 **Total Time Spent - 4.2hr**
+
+
+## July 2nd : Completing the rest of the PCB part
+
+So today I started making the pcb more good looking by adding the silk screen into the pcb and I have export the PCB step file for the case design that I need to make for this PCb .
+I make the PCB silk screen simple because when I will solder all the parts like the switches all this will not be visible to use so I think I think it will be better to make the PCB clean 
+
+**adding my name to the PCB**
+
+<img width="379" height="171" alt="16" src="https://github.com/user-attachments/assets/2e3dba17-18e3-47bb-9fe1-21f6f4a8cff0" />
+
+<img width="1339" height="759" alt="17" src="https://github.com/user-attachments/assets/de9d599f-221e-4ec5-acae-eff229fe3c97" />
+
+<img width="1458" height="832" alt="18" src="https://github.com/user-attachments/assets/612e96b2-491a-4fd4-9c76-96b3dabb7da2" />
+
+**Hack Club Logo added to the PCB**
+
+
+<img width="1443" height="839" alt="19" src="https://github.com/user-attachments/assets/0fdf2e87-6c22-4f0b-b533-27ac7e40ba35" />
+
+<img width="672" height="399" alt="20" src="https://github.com/user-attachments/assets/33479a83-93a3-4735-9262-44c18bae875b" />
+
+#### DRC Check - yaa No error after tracing all the pads correctly 
+
+<img width="1129" height="778" alt="21" src="https://github.com/user-attachments/assets/7316a74b-0f14-4039-85fd-cb74c94adb42" />
+
+<img width="988" height="592" alt="22" src="https://github.com/user-attachments/assets/c17ddec4-1fcc-4698-8c4c-e2710af596fa" />
+
+**Final look**
+
+#### Left 
+
+<img width="801" height="531" alt="23" src="https://github.com/user-attachments/assets/95bf7f78-ffd9-4398-934b-871854b6ba8c" />
+
+
+#### Right 
+
+<img width="801" height="534" alt="24" src="https://github.com/user-attachments/assets/0a2c15c3-277a-4d47-b491-884c112d76b1" />
+
+**plotting the Garber file**
+
+<img width="1383" height="811" alt="25" src="https://github.com/user-attachments/assets/64f46db0-911e-4060-b444-47c031d44bfb" />
+
+**Total Time Spent - 1.5hr**
 
 
 

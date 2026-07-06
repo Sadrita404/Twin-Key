@@ -78,7 +78,7 @@ So in the previous day, I have already selected the micro controller and pretty 
 
 So previously I have completed a schematic of the PCB and I take one day gap because I was not in my hometown, so after coming I went to look at the schematic, and then I realise that I need to do a lot of work like I have just made the schematic now I need to import that schematic into PCB designing. Then I need to trace all the pads. So today I will do all of that hopefully completed that, like the main problem is the DRC check error,  I don't know. I have done completing all the traces, but suddenly it's showing error. Hopefully, I will try my best this time. I will do it with all my concentration so that nothing gets out and all the pads should be routed.
 
-** importing schematic to PCB**
+**updating PCB from schematic**
 
 <img width="1470" height="883" alt="10" src="https://github.com/user-attachments/assets/725d33ea-b5d5-4568-ad2f-b12bbb85a0d6" />
 
